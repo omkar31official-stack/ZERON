@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: zeron-careon-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        value: "https://your-vercel-app-url.vercel.app" # UPDATE THIS ONCE FRONTEND IS DEPLOYED
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: DB_PATH
+        value: ./data/database.sqlite # Note: Will wipe on restart unless using paid Render disk

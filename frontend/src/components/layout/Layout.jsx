@@ -25,7 +25,8 @@ export default function Layout() {
     fetchNotifications();
 
     // Connect socket
-    socket = io('/', {
+    const socketUrl = import.meta.env.VITE_SOCKET_URL || '/';
+    socket = io(socketUrl, {
       query: { username: user?.username || 'unknown' },
       reconnectionAttempts: 5,
     });

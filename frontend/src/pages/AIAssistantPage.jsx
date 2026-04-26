@@ -94,7 +94,7 @@ export default function AIAssistantPage() {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-6 space-y-4">
         {messages.length === 0 && !typing && (
-          <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="text-center py-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center py-12">
             <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-600/20 flex items-center justify-center mx-auto mb-4 border border-indigo-500/20">
               <Brain size={36} className="text-indigo-400" />
             </div>
@@ -117,7 +117,7 @@ export default function AIAssistantPage() {
           {messages.map((msg, idx) => (
             <motion.div
               key={msg.id || idx}
-              initial={{opacity:0,y:10}} animate={{opacity:1,y:0}}
+              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-3`}
             >
               {msg.role === 'assistant' && (
@@ -128,7 +128,7 @@ export default function AIAssistantPage() {
               <div className={msg.role === 'user' ? 'chat-bubble-user' : 'chat-bubble-ai'}>
                 <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
                 <p className={`text-xs mt-1 ${msg.role === 'user' ? 'text-white/50' : 'text-white/30'}`}>
-                  {msg.created_at ? formatDistanceToNow(new Date(msg.created_at), {addSuffix:true}) : 'just now'}
+                  {msg.created_at ? formatDistanceToNow(new Date(msg.created_at), { addSuffix: true }) : 'just now'}
                 </p>
               </div>
               {msg.role === 'user' && (
@@ -142,14 +142,14 @@ export default function AIAssistantPage() {
 
         {/* Typing indicator */}
         {typing && (
-          <motion.div initial={{opacity:0}} animate={{opacity:1}} className="flex items-center gap-3">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
               <Bot size={14} className="text-white" />
             </div>
             <div className="chat-bubble-ai flex items-center gap-1 py-3">
-              {[0,1,2].map(i => (
+              {[0, 1, 2].map(i => (
                 <motion.div key={i} className="w-2 h-2 rounded-full bg-indigo-400"
-                  animate={{scale:[1,1.4,1]}} transition={{duration:0.8,repeat:Infinity,delay:i*0.2}} />
+                  animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.2 }} />
               ))}
             </div>
           </motion.div>
